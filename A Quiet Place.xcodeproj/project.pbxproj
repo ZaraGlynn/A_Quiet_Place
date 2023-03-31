@@ -8,17 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		4824D23129D64B6F000E2F2C /* A_Quiet_PlaceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4824D23029D64B6F000E2F2C /* A_Quiet_PlaceApp.swift */; };
-		4824D23329D64B6F000E2F2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4824D23229D64B6F000E2F2C /* ContentView.swift */; };
 		4824D23529D64B71000E2F2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4824D23429D64B71000E2F2C /* Assets.xcassets */; };
 		4824D23829D64B71000E2F2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4824D23729D64B71000E2F2C /* Preview Assets.xcassets */; };
+		4824D24029D650A2000E2F2C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4824D23F29D650A2000E2F2C /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4824D22D29D64B6F000E2F2C /* A Quiet Place.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "A Quiet Place.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4824D23029D64B6F000E2F2C /* A_Quiet_PlaceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A_Quiet_PlaceApp.swift; sourceTree = "<group>"; };
-		4824D23229D64B6F000E2F2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4824D23429D64B71000E2F2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4824D23729D64B71000E2F2C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4824D23F29D650A2000E2F2C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +51,8 @@
 		4824D22F29D64B6F000E2F2C /* A Quiet Place */ = {
 			isa = PBXGroup;
 			children = (
+				4824D23E29D6506D000E2F2C /* UI */,
 				4824D23029D64B6F000E2F2C /* A_Quiet_PlaceApp.swift */,
-				4824D23229D64B6F000E2F2C /* ContentView.swift */,
 				4824D23429D64B71000E2F2C /* Assets.xcassets */,
 				4824D23629D64B71000E2F2C /* Preview Content */,
 			);
@@ -65,6 +65,14 @@
 				4824D23729D64B71000E2F2C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4824D23E29D6506D000E2F2C /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				4824D23F29D650A2000E2F2C /* MainView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4824D23329D64B6F000E2F2C /* ContentView.swift in Sources */,
+				4824D24029D650A2000E2F2C /* MainView.swift in Sources */,
 				4824D23129D64B6F000E2F2C /* A_Quiet_PlaceApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

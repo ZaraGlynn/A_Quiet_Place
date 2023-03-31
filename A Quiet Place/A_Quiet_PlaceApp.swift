@@ -11,7 +11,7 @@ import SwiftUI
 struct A_Quiet_PlaceApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
