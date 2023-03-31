@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var userInput: String = ""
     @State var isOpen: Bool = false
     @State var color1 = Color.pink
     @State var color2 = Color.purple
@@ -27,16 +26,15 @@ struct MainView: View {
                 .ignoresSafeArea()
            
             VStack {
+                Spacer()
+                VStack(alignment: .center) {
+                    
+                    TextView()
+                }.padding()
+                Spacer()
+                
                 VStack {
-                        TextField (
-                            "Hello World", text: $userInput
-                        )
-                        .padding()
-                        .disableAutocorrection(true)
-                        .textFieldStyle(.roundedBorder)
-                    }
-                VStack { 
-                    HStack{
+                    HStack(alignment: .bottom){
                         Button( action: {
                             self.isOpen.toggle()
                         }){
@@ -59,6 +57,7 @@ struct MainView: View {
                         }
                     }
                 }
+
             }
         }
     }
