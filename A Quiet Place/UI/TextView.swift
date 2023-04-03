@@ -7,22 +7,17 @@
 
 import SwiftUI
 
-extension VerticalAlignment {
-    private enum MyAlignment : AlignmentID {
-        static func defaultValue(in d: ViewDimensions) -> CGFloat {
-            return d[.bottom]
-        }
-    }
-    static let myAlignment = VerticalAlignment(MyAlignment.self)
-}
-
 struct TextView: View {
-    @State var showText: Bool = false
+    @State var textOpacity: Double = 1
     @State var userInput: String = ""
-    @State var tmpInput: String = ""
+    @State var text: String = ""
+    
+    var showText: Bool {
+        textOpacity < 1
+    }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
                 TextField (
                     "Hello World", text: $userInput
                 )
@@ -31,20 +26,29 @@ struct TextView: View {
                 .textFieldStyle(.roundedBorder)
                 .onSubmit {
                     withAnimation(.spring()) {
-                        
-                        tmpInput = userInput
+                        text = userInput
                         userInput = ""
-                        self.showText.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            withAnimation(.easeOut(duration: 2)){
+                                textOpacity = 0
+                            }
+                        }
                     }
                 }
            
-                if (tmpInput.count > 0) {
-                    HStack {
-                        Text(tmpInput)
-                    }
+                if text.count > 0 && showText {
+                    Text(text)
                     .border(.black)
-                    .transition(.move(edge: .bottom))
-                    .zIndex(1)
+                    .offset(x: 0, y: textOpacity == 1 ? 0 : UIScreen.main.bounds.height)
+                    .animation(.easeInOut(duration: 2), value: textOpacity)
+                    .onChange(of: textOpacity) { newValue in
+                        if newValue == 0 {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2)  {
+                                textOpacity = 1
+                            }
+                        }
+                        
+                    }
                 }
         }
     }

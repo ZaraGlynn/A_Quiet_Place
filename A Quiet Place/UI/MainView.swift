@@ -8,56 +8,38 @@
 import SwiftUI
 
 struct MainView: View {
-    @State var isOpen: Bool = false
-    @State var color1 = Color.pink
-    @State var color2 = Color.purple
+    @State var colors: [Color] = [
+        .purple,
+        .pink
+    ]
+    @State public var viewHeight: CGFloat = 0
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .foregroundColor(.clear)
-                .background(LinearGradient(
-                    gradient: Gradient(
-                    colors: [color1, color2]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                
-                ))
-                .ignoresSafeArea()
-           
-            VStack {
-                Spacer()
-                VStack(alignment: .center) {
+        GeometryReader { geometry in
+            ZStack {
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .background(LinearGradient(
+                        gradient: Gradient(
+                        colors: [colors[0], colors[1]]),
+                        startPoint: .top,
+                        endPoint: .bottom
                     
-                    TextView()
-                }.padding()
-                Spacer()
-                
+                    ))
+                    .ignoresSafeArea()
+                    .overlay(
+                        Color.clear.onAppear {
+                            self.viewHeight = geometry.size.height
+                        }
+                    )                
+               
                 VStack {
-                    HStack(alignment: .bottom){
-                        Button( action: {
-                            self.isOpen.toggle()
-                        }){
-                            if !isOpen {
-                                Text("Change Background Color")
-                                .foregroundColor(.black)
-                            } else {
-                                Text("Close")
-                                .foregroundColor(.black)
-                            }
-                        }
-                    }
-                    .padding()
-                    .buttonStyle(.bordered)
+                    Spacer()
+                    TextView()
+                    Spacer()
+                    Settings(colors: $colors)
                     
-                    HStack {
-                        if isOpen {
-                            ColorPicker("First Colour", selection: $color1)
-                            ColorPicker("Second Colour ", selection: $color2)
-                        }
-                    }
                 }
-
             }
         }
     }
